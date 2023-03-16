@@ -1,39 +1,37 @@
 import { Component, Input, Output } from "rete";
-import { workFlowSocket } from "../sockets";
-import { WorkFlowControl } from "../controls/workflow-control";
+import { numSocket } from "../sockets";
+import { NumControl } from "../controls/number-control";
 
 export class AddComponent extends Component {
   override data: any;
-
   constructor() {
-    super("Workflow");
+    super("Add");
   }
 
   async builder(node) {
-    const inp0 = new Input("str", "New Workflow", workFlowSocket);
-    const out0 = new Output("str0", "Alias", workFlowSocket);
-    const out1 = new Output("str1", "Name", workFlowSocket);
-    const out2 = new Output("str2", "Flag", workFlowSocket);
+    const inp1 = new Input("num1", "Number", numSocket);
+    const inp2 = new Input("num2", "Number", numSocket);
+    const out = new Output("num", "Number", numSocket);
 
-    inp0.addControl(new WorkFlowControl(this.editor, "str"));
+    inp1.addControl(new NumControl(this.editor, "num1"));
+    inp2.addControl(new NumControl(this.editor, "num2"));
 
     node
-      .addInput(inp0)
-      .addControl(new WorkFlowControl(this.editor, "preview", true))
-      .addOutput(out0)
-      .addOutput(out1)
-      .addOutput(out2);
-
+      .addInput(inp1)
+      .addInput(inp2)
+      .addControl(new NumControl(this.editor, "preview", true))
+      .addOutput(out);
   }
 
   worker(node, inputs, outputs) {
-    const n0 = inputs["str"].length ? inputs["str"][0] : node.data.str;
+    const n1 = inputs["num1"].length ? inputs["num1"][0] : node.data.num1;
+    const n2 = inputs["num2"].length ? inputs["num2"][0] : node.data.num2;
+    const sum = n1 + n2;
+
     const ctrl = this.editor.nodes
       .find(n => n.id === node.id)
-      .controls.get("preview") as WorkFlowControl;
-    ctrl.setValue(n0);
-    outputs["str0"] = ctrl.props["value"]["alias"];
-    outputs["str1"] = ctrl.props["value"]["name"];
-    outputs["str2"] = ctrl.props["value"]["flag"];
+      .controls.get("preview") as NumControl;
+    ctrl.setValue(sum);
+    outputs["num"] = sum;
   }
 }

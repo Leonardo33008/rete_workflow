@@ -1,3 +1,3 @@
 import { Socket } from "rete";
 
-export const workFlowSocket = new Socket("Workflow value");
+export const numSocket = new Socket("Number value");

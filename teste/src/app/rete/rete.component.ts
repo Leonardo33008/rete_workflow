@@ -3,10 +3,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { NodeEditor, Engine } from "rete";
 import ConnectionPlugin from "rete-connection-plugin";
 import ContextMenuPlugin from "rete-context-menu-plugin";
-import { WorkFlowComponent } from "./components/workflow-component";
+import { NumComponent } from "./components/number-component";
 import { AddComponent } from "./components/add-component";
 import { AngularRenderPlugin } from "rete-angular-render-plugin";
-import { DataNodeService } from '../services/data-node.service';
 
 
 @Component({
@@ -17,7 +16,8 @@ import { DataNodeService } from '../services/data-node.service';
     </div>
   `,
   styles: [
-    `.wrapper {
+    `
+      .wrapper {
         width: 100%;
         height: 100%;
       }
@@ -30,24 +30,14 @@ import { DataNodeService } from '../services/data-node.service';
 export class ReteComponent implements AfterViewInit {
   @ViewChild("nodeEditor") el: ElementRef;
   editor = null;
-  values = [];
-
-  constructor(
-    private dataNodeService: DataNodeService
-  ) {}
 
   async ngAfterViewInit() {
-    this.dataNodeService.getValue().subscribe( data => {
-      this.values = data;
-      // console.log('VALUES ===== ', this.values)
-      });
     setTimeout(async () => {
       const container = this.el.nativeElement;
 
-      const components = [new WorkFlowComponent(), new AddComponent()];
+      const components = [new NumComponent(), new AddComponent()];
 
       const editor = new NodeEditor("demo@0.2.0", container);
-
       editor.use(ConnectionPlugin);
       console.log("AngularRenderPlugin", AngularRenderPlugin);
       editor.use(AngularRenderPlugin); //, { component: MyNodeComponent });
@@ -60,22 +50,20 @@ export class ReteComponent implements AfterViewInit {
         engine.register(c);
       });
 
+      const n1 = await components[0].createNode({num: 2});
+      const n2 = await components[0].createNode({num: 0});
       const add = await components[1].createNode();
+
+      n1.position = [80, 200];
+      n2.position = [80, 400];
       add.position = [500, 240];
+
+      editor.addNode(n1);
+      editor.addNode(n2);
       editor.addNode(add);
 
-      if(this.values.length !== 0) {
-        let n = [];
-        for(let i = 0; i < this.values.length; i++){
-          n[i] = await components[0].createNode({
-            str: this.values[i]
-          });
-          n[i].position = [80, (i + 1) * 200];
-          editor.addNode(n[i]);
-          editor.connect(n[i].outputs.get("str"), add.inputs.get(`str`));
-        }
-      }
-
+      editor.connect(n1.outputs.get("num"), add.inputs.get("num1"));
+      editor.connect(n2.outputs.get("num"), add.inputs.get("num2"));
 
       editor.on(["process", "nodecreated", "noderemoved", "connectioncreated", "connectionremoved"], (async () => {
         await engine.abort();
@@ -87,4 +75,3 @@ export class ReteComponent implements AfterViewInit {
     }, 800);
   }
 }
-

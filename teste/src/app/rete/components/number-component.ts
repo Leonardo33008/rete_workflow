@@ -15,5 +15,6 @@ export class NumComponent extends Component {
 
   worker(node, inputs, outputs) {
     outputs["num"] = node.data.num;
+    // console.log('node.data', node.data.num)
   }
 }

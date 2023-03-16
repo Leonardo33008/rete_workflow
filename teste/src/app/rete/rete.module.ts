@@ -1,14 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReteModule } from "rete-angular-render-plugin";
-import { WorkFlowNgControl } from "./controls/workFlowCtrl.component";
+import { NumberNgControl } from "./controls/num.component";
 import { ReteComponent } from "./rete.component";
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ReteComponent, WorkFlowNgControl],
-  imports: [CommonModule, ReteModule, ReactiveFormsModule],
+  declarations: [ReteComponent, NumberNgControl],
+  imports: [CommonModule, ReteModule],
   exports: [ReteComponent, ReteModule],
-  entryComponents: [WorkFlowNgControl]
+  entryComponents: [NumberNgControl]
 })
 export class MyReteEditorModule {}
