@@ -1,0 +1,137 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+div .wrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  label {
+    margin-top: 8px;
+  }
+
+  input {
+    border-radius: 30px;
+    background-color: white;
+    padding: 2px 6px;
+    border: 1px solid #999;
+    font-size: 16px;
+    width: 180px;
+    height: 30px;
+    box-sizing: border-box;
+  }
+
+  select {
+    margin-top: 2px;
+    border-radius: 30px;
+    background-color: white;
+    padding: 1px 6px;
+    border: 1px solid #999;
+    font-size: 16px;
+    width: 180px;
+    height: 30px;
+    box-sizing: border-box;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+
+  ion-button {
+    text-transform: initial;
+  }
+}
+
+///////// TOAST ////////
+
+.toast-class {
+  --max-width: 22%;
+  font-weight: 500;
+}
+
+
+////////// COLOR NODE //////////
+
+.node {
+  background: #2C7BBF !important;
+  border: 0px solid #333 !important;
+  box-shadow: 2px 2px 5px #888;
+
+  &.início {
+    background: #d4395f !important;
+  }
+
+  &.fim {
+    background: #46b479 !important;
+  }
+}
+
+.node:hover {
+  background: #4498de !important;
+}
+
+.node.início:hover {
+  background: #d25070 !important;
+}
+
+.node.fim:hover {
+  background: #5cc08b !important;
+}
+
+.node.selected {
+  background: #ffa726 !important;
+  border: 2px solid white !important;
+}
+
+.node .title {
+  color: #f1cc5c !important;
+  font-weight: 600 !important;
+}
+
+.context-menu .item {
+  background-color: rgba(51, 51, 51, 0.64) !important;
+  border: 0px solid white !important;
+  padding: 5px 10px !important;
+  font-family: sans-serif !important;
+}
+
+.context-menu .item:hover {
+  background-color: #2b5088 !important;
+}
+
+//////// MODAL PARAMETROS ////////
+
+.parametros {
+  &::part(content) {
+    border-radius: 16px;
+    box-shadow: 0 -20px 30px 0 rgba(22, 23, 94, 0.09);
+    width: 25%;
+    height: 60%;
+  }
+}

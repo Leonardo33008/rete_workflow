@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "workflow-rete",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

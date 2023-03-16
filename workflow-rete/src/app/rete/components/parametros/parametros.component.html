@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Parâmentros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="paramsForm">
+    <div class="body">
+      <ion-grid [fixed]="true">
+        <h2>Alerta de Quantidade</h2>
+        <ion-row>
+          <ion-col>
+            <ion-label>
+              Quantidade 1:
+            </ion-label>
+            <input formControlName="qtd1"/>
+          </ion-col>
+          <ion-col>
+            <ion-label>
+              Quantidade 2:
+            </ion-label>
+            <input formControlName="qtd2"/>
+          </ion-col>
+        </ion-row>
+        <h2>Alerta de Tempo</h2>
+        <ion-row>
+          <ion-col>
+            <ion-label>
+              Tempo 1:
+            </ion-label>
+            <input formControlName="tmp1"/>
+          </ion-col>
+          <ion-col>
+            <ion-label>
+              Tempo 2:
+            </ion-label>
+            <input formControlName="tmp2"/>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="table">
+      <table>
+        <thead>
+        <tr>
+          <th>Chave</th>
+          <th>Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container formArrayName="table" *ngFor="let rows of paramsForm.get('table')['controls']; let i = index">
+            <tr [formGroupName]="i">
+              <td>
+                <input type="text" formControlName="chave"/>
+              </td>
+              <td>
+                <input type="text" formControlName="valor"/>
+              </td>
+            </tr>
+          </ng-container>
+      </table>
+      <div class="addRow">
+        <ion-icon slot="end" name="remove-circle" color="danger" (click)="removeRow()"></ion-icon>
+        <ion-icon slot="end" name="add-circle" color="primary" (click)="addRow()"></ion-icon>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer>
+  <div class="btn">
+    <ion-button shape="round" color="success" (click)="salvar()" slot="center">Salvar</ion-button>
+  </div>
+</ion-footer>

@@ -1,0 +1,7 @@
+{
+  "name": "workflow-rete",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

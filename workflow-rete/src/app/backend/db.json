@@ -1,0 +1,148 @@
+{
+  "data": {
+    "id": "demo@0.2.0",
+    "nodes": {
+      "1": {
+        "id": 1,
+        "data": {
+          "addValue": {
+            "id": 1,
+            "faseName": "Início",
+            "alias": "",
+            "name": "",
+            "flag": ""
+          },
+          "params": {
+            "qtd1": "",
+            "qtd2": "",
+            "tmp1": "",
+            "tmp2": "",
+            "table": []
+          }
+        },
+        "inputs": {},
+        "outputs": {
+          "out": {
+            "connections": [
+              {
+                "node": 3,
+                "input": "in1",
+                "data": {}
+              }
+            ]
+          }
+        },
+        "position": [
+          140.28515625,
+          199.203125
+        ],
+        "name": "Início"
+      },
+      "2": {
+        "id": 2,
+        "data": {
+          "addValue": {
+            "id": 2,
+            "faseName": "Fim",
+            "alias": "",
+            "name": "",
+            "flag": ""
+          },
+          "params": {
+            "qtd1": "",
+            "qtd2": "",
+            "tmp1": "",
+            "tmp2": "",
+            "table": []
+          }
+        },
+        "inputs": {
+          "in1": {
+            "connections": [
+              {
+                "node": 3,
+                "output": "out1",
+                "data": {}
+              }
+            ]
+          },
+          "in2": {
+            "connections": []
+          },
+          "in3": {
+            "connections": []
+          }
+        },
+        "outputs": {},
+        "position": [
+          1236.546875,
+          224.54296875
+        ],
+        "name": "Fim"
+      },
+      "3": {
+        "id": 3,
+        "data": {
+          "addValue": {
+            "id": 3,
+            "faseName": "Fase",
+            "alias": "alias",
+            "name": "nome",
+            "flag": ""
+          },
+          "params": {
+            "qtd1": "q1",
+            "qtd2": "q2",
+            "tmp1": "t1",
+            "tmp2": "t2",
+            "table": [
+              {
+                "chave": "c1",
+                "valor": "v1"
+              }
+            ]
+          }
+        },
+        "inputs": {
+          "in1": {
+            "connections": [
+              {
+                "node": 1,
+                "output": "out",
+                "data": {}
+              }
+            ]
+          },
+          "in2": {
+            "connections": []
+          },
+          "in3": {
+            "connections": []
+          }
+        },
+        "outputs": {
+          "out1": {
+            "connections": [
+              {
+                "node": 2,
+                "input": "in1",
+                "data": {}
+              }
+            ]
+          },
+          "out2": {
+            "connections": []
+          },
+          "out3": {
+            "connections": []
+          }
+        },
+        "position": [
+          631.18359375,
+          222.1796875
+        ],
+        "name": "Fase"
+      }
+    }
+  }
+}
