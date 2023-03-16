@@ -95,8 +95,3 @@ export class ParametrosComponent implements OnInit {
     this.dismiss();
   }
 }
-
-
-//      const dataInit = JSON.parse(localStorage.getItem('_WorkFlow'));
-//       dataInit.nodes[this.newValue[0]["id"]].data["addValue"] = Object.assign({}, this.newValue[0]);
-//       localStorage.setItem('_WorkFlow', JSON.stringify(dataInit));
