@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { DataNodeService } from '../../../services/data-node.service';
 import { ToastService } from '../../../services/toast.service';
 
@@ -31,6 +31,7 @@ export class ParametrosComponent implements OnInit {
     let dadosDb = JSON.parse(localStorage.getItem('_WorkFlow'));
     let nodes = Object.values(dadosDb.nodes);
     let node = nodes.find((item) => item["id"] === this.value.id);
+
     this.dataValue = node["data"].params;
     this.paramsForm.patchValue({
       "qtd1": this.dataValue.qtd1,
@@ -58,10 +59,10 @@ export class ParametrosComponent implements OnInit {
     row.push(keys);
   }
 
-  removeRow() {
+  removeRow(index) {
     const numRows = this.paramsForm.get('table') as FormArray;
-    let i = numRows.value.length - 1;
-    numRows.removeAt(i);
+    // let i = numRows.value.length - 1;
+    numRows.removeAt(index);
   }
 
   getDataTable() {

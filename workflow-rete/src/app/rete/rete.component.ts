@@ -85,15 +85,12 @@ export class ReteComponent implements AfterViewInit {
 
       localStorage.setItem('_WorkFlow', JSON.stringify(data));
 
-      editor.on("nodecreated", (node) => {
-        const data = editor.toJSON();
-        let nodes = Object.keys(data.nodes);
-        let last = nodes[nodes.length - 1];
-        let name = data.nodes[last].name;
-        data.nodes[last].data["addValue"] = {id: +last, faseName: name, alias: '', name: '', flag: ''};
-        data.nodes[last].data["params"] = {qtd1: '', qtd2: '', tmp1: '', tmp2: '', table: []};
+      editor.on("nodecreated", async (node) => {
+        node.data["addValue"] = {id: node.id, faseName: node.name, alias: '', name: '', flag: ''};
+        node.data["params"] = {qtd1: '', qtd2: '', tmp1: '', tmp2: '', table: []};
+        const dataEditor = editor.toJSON();
 
-        localStorage.setItem('_WorkFlow', JSON.stringify(data));
+        await localStorage.setItem('_WorkFlow', JSON.stringify(dataEditor));
       });
 
       editor.on("noderemoved", (node) => {

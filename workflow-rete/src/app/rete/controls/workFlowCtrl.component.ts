@@ -42,8 +42,8 @@ export class WorkFlowNgControl {
   @Input() formulario: any;
 
   form: FormGroup = new FormGroup({
-    id: new FormControl(''),
-    faseName: new FormControl(''),
+    id: new FormControl('', [Validators.required]),
+    faseName: new FormControl('', [Validators.required]),
     alias: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     flag: new FormControl('', [Validators.required]),
@@ -54,10 +54,10 @@ export class WorkFlowNgControl {
   ){}
 
   ngOnInit() {
-    this.mounted();
     setTimeout(() => {
+      this.mounted();
       if (this.value) {
-        this.form.get('id').setValue(this.value["id"] ? this.value["id"] : "" );
+        this.form.get('id').setValue(this.value["id"]);
         this.form.get('faseName').setValue(this.value["faseName"] ? this.value["faseName"] : "" );
         this.form.get('alias').setValue(this.value["alias"] ? this.value["alias"] : "" );
         this.form.get('name').setValue(this.value["name"] ? this.value["name"] : "");
@@ -67,7 +67,7 @@ export class WorkFlowNgControl {
         this.form.valueChanges.subscribe(dataChange => {
           this.formulario = dataChange;
         });
-    }, 200);
+    }, 600);
 
   }
 

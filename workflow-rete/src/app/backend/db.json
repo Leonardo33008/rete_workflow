@@ -60,7 +60,7 @@
           "in1": {
             "connections": [
               {
-                "node": 3,
+                "node": 4,
                 "output": "out1",
                 "data": {}
               }
@@ -75,8 +75,8 @@
         },
         "outputs": {},
         "position": [
-          1236.546875,
-          224.54296875
+          1593.015625,
+          252.6328125
         ],
         "name": "Fim"
       },
@@ -86,8 +86,66 @@
           "addValue": {
             "id": 3,
             "faseName": "Fase",
-            "alias": "alias",
-            "name": "nome",
+            "alias": "alias1",
+            "name": "nome1",
+            "flag": ""
+          },
+          "params": {
+            "qtd1": "",
+            "qtd2": "",
+            "tmp1": "",
+            "tmp2": "",
+            "table": []
+          }
+        },
+        "inputs": {
+          "in1": {
+            "connections": [
+              {
+                "node": 1,
+                "output": "out",
+                "data": {}
+              }
+            ]
+          },
+          "in2": {
+            "connections": []
+          },
+          "in3": {
+            "connections": []
+          }
+        },
+        "outputs": {
+          "out1": {
+            "connections": [
+              {
+                "node": 4,
+                "input": "in1",
+                "data": {}
+              }
+            ]
+          },
+          "out2": {
+            "connections": []
+          },
+          "out3": {
+            "connections": []
+          }
+        },
+        "position": [
+          454.82421875,
+          140.7265625
+        ],
+        "name": "Fase"
+      },
+      "4": {
+        "id": 4,
+        "data": {
+          "addValue": {
+            "id": 4,
+            "faseName": "Fase",
+            "alias": "alias2",
+            "name": "nome2",
             "flag": ""
           },
           "params": {
@@ -97,12 +155,12 @@
             "tmp2": "t2",
             "table": [
               {
-                "chave": "c1",
-                "valor": "v1"
+                "chave": "cc2",
+                "valor": "vv2"
               },
               {
-                "chave": "c2",
-                "valor": "v2"
+                "chave": "cc3",
+                "valor": "vv3"
               }
             ]
           }
@@ -111,8 +169,8 @@
           "in1": {
             "connections": [
               {
-                "node": 1,
-                "output": "out",
+                "node": 3,
+                "output": "out1",
                 "data": {}
               }
             ]
@@ -142,8 +200,8 @@
           }
         },
         "position": [
-          631.18359375,
-          222.1796875
+          988.7890625,
+          135.51171875
         ],
         "name": "Fase"
       }

@@ -23,25 +23,33 @@
 }
 
 .table {
-  padding: 24px;
+  padding: 24px 7px 24px 27px;
   table {
     width: 100%;
+
     th {
       height: 30px;
       background-color: var(--ion-color-primary);
       border: solid 1px #999;
       width: 50%;
     }
-    td {
-      border: solid 1px #999;
-      height: 30px;
-      input {
-        border: none;
-        background-color: white;
-        padding: 2px 6px;
-        font-size: 16px;
-        width: 100%;
-        touch-action: none;
+    tr {
+      ion-icon {
+        font-size: 19px;
+        padding-top: 6px;
+      }
+      td {
+        border: solid 1px #999;
+        height: 30px;
+
+        input {
+          border: none;
+          background-color: white;
+          padding: 2px 6px;
+          font-size: 16px;
+          width: 100%;
+          touch-action: none;
+        }
       }
     }
   }
@@ -53,6 +61,7 @@
   margin-right: 4px;
 
   ion-icon {
+    padding: 2px 14px 0 0;
     font-size: 24px;
   }
 }
