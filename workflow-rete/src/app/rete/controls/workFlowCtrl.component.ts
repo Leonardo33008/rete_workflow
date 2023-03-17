@@ -30,7 +30,7 @@ import { ParametrosComponent } from '../components/parametros/parametros.compone
       </div>
     </form>
     <div class="btn">
-      <ion-button shape="round" color="medium" (click)="parametros()">Parâmentros</ion-button>
+      <ion-button shape="round" color="medium" (click)="parametros()">Parâmetros</ion-button>
     </div>
   `
 })
